@@ -1,46 +1,1115 @@
-Generate a modern, professional portfolio website for a Grade 11 student 
-applying to universities. The site should be a SINGLE index.html file with 
-all HTML, CSS, and JavaScript inline.
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zirui Zang | Academic Excellence Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-STUDENT PROFILE:
-- Name: Zirui Zang (Jason)
-- Born: January 18, 2009
-- Currently: Grade 11, NFLS Cambridge A-level Center
-- Academic Focus: Physics, Mathematics, Chemistry, Economics
+        html {
+            scroll-behavior: smooth;
+        }
 
-ACHIEVEMENTS TO SHOWCASE:
-- 2025 AMC12B: Score 112.5 (Top 10%)
-- 2025 British Physics Olympiad: Global Bronze I
-- 2025 PhysicsBowl: Top Gold (Division 1)
-- 2025 Senior Physics Challenge: Global Gold
-- 2024 Senior Mathematical Challenge: Global Gold
-- 2025 British Mathematical Olympiad Round 1: Distinction
-- 2024-2025 HiMCM: Honorable Mention
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: #0a0e27;
+            color: #e0e6ff;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
 
-DESIGN REQUIREMENTS:
-- Modern, minimalist aesthetic with academic sophistication
-- Color scheme: Deep navy/charcoal primary with accent colors (gold/blue) 
-  reflecting achievement/academic excellence
-- Header section: Name, brief tagline about academic excellence
-- Clear navigation between sections
-- Achievements displayed prominently with visual hierarchy
-- Contact information (email: ziruizang30@gmail.com)
-- Responsive design that works on mobile and desktop
-- Subtle animations on scroll or hover (professional, not excessive)
-- Typography: Use system fonts or web-safe fonts for reliability
-- Include a hero section that immediately conveys academic excellence
-- Dark theme preferred for modern look
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 14, 39, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(79, 209, 197, 0.1);
+        }
 
-SECTIONS:
-1. Hero/Header - Compelling introduction
-2. About - Brief academic background and interests
-3. Achievements - Awards and honors with dates
-4. Academic Interests - Subject areas studied
-5. Contact - Email and brief CTA
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-OUTPUT:
-Single index.html file, ready to deploy. No external dependencies needed.
-Clean, commented code. Professional but youthful tone in copywriting.
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #4fd1c5 0%, #a8dadc 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
 
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
 
+        .nav-links a {
+            color: #b0b8d4;
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+            font-weight: 500;
+        }
 
+        .nav-links a:hover {
+            color: #4fd1c5;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                gap: 1rem;
+                font-size: 0.85rem;
+            }
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 60px;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(79, 209, 197, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            top: -100px;
+            right: -100px;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(168, 218, 220, 0.05) 0%, transparent 70%);
+            border-radius: 50%;
+            bottom: -50px;
+            left: -50px;
+            animation: float 8s ease-in-out infinite reverse;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(20px); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            max-width: 900px;
+            padding: 2rem;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 8vw, 4.5rem);
+            margin-bottom: 1rem;
+            font-weight: 800;
+            line-height: 1.2;
+            color: #ffffff;
+        }
+
+        .hero .name-highlight {
+            background: linear-gradient(135deg, #4fd1c5 0%, #a8dadc 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            color: #b0b8d4;
+            margin-bottom: 0.5rem;
+            font-weight: 300;
+        }
+
+        .hero-subtitle {
+            font-size: 1.1rem;
+            color: #8892b0;
+            margin-bottom: 2rem;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+            padding: 2rem 0;
+            border-top: 1px solid rgba(79, 209, 197, 0.2);
+            border-bottom: 1px solid rgba(79, 209, 197, 0.2);
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #4fd1c5;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: #b0b8d4;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 0.5rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: linear-gradient(135deg, #4fd1c5 0%, #45b8b0 100%);
+            color: #0a0e27;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            border: none;
+            font-size: 1rem;
+            margin-top: 1rem;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(79, 209, 197, 0.3);
+        }
+
+        /* Sections */
+        section {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 6rem 2rem;
+        }
+
+        section h2 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            margin-bottom: 3rem;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        section h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, #4fd1c5, #a8dadc);
+            border-radius: 2px;
+        }
+
+        /* About Section */
+        #about {
+            background: linear-gradient(135deg, rgba(26, 31, 58, 0.5) 0%, rgba(10, 14, 39, 0.8) 100%);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 2rem;
+            align-items: start;
+        }
+
+        .about-content p {
+            font-size: 1.1rem;
+            color: #b0b8d4;
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .focus-area {
+            margin-bottom: 2.5rem;
+        }
+
+        .focus-area h3 {
+            color: #4fd1c5;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+
+        .subjects {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .subject-tag {
+            background: rgba(79, 209, 197, 0.15);
+            border: 1px solid rgba(79, 209, 197, 0.3);
+            color: #4fd1c5;
+            padding: 0.7rem 1.5rem;
+            border-radius: 25px;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+        }
+
+        .subject-tag:hover {
+            background: rgba(79, 209, 197, 0.25);
+            border-color: rgba(79, 209, 197, 0.5);
+        }
+
+        /* Skills Section */
+        #skills {
+            background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 100%);
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .skill-category {
+            background: rgba(26, 31, 58, 0.6);
+            border: 1px solid rgba(79, 209, 197, 0.2);
+            padding: 2rem;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .skill-category:hover {
+            border-color: rgba(79, 209, 197, 0.5);
+            background: rgba(26, 31, 58, 0.9);
+        }
+
+        .skill-category h3 {
+            color: #4fd1c5;
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .skill-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+        }
+
+        .skill-item {
+            background: rgba(79, 209, 197, 0.1);
+            color: #a8dadc;
+            padding: 0.6rem 1.2rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            border: 1px solid rgba(79, 209, 197, 0.2);
+        }
+
+        /* Achievements Section */
+        #achievements {
+            background: linear-gradient(135deg, rgba(26, 31, 58, 0.5) 0%, rgba(10, 14, 39, 0.8) 100%);
+        }
+
+        .achievements-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .achievement-card {
+            background: rgba(26, 31, 58, 0.6);
+            border: 1px solid rgba(79, 209, 197, 0.2);
+            padding: 2rem;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .achievement-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, #4fd1c5, #a8dadc);
+        }
+
+        .achievement-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(79, 209, 197, 0.5);
+            background: rgba(26, 31, 58, 0.9);
+            box-shadow: 0 10px 30px rgba(79, 209, 197, 0.15);
+        }
+
+        .achievement-year {
+            color: #4fd1c5;
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.8rem;
+        }
+
+        .achievement-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 0.8rem;
+            color: #ffffff;
+        }
+
+        .achievement-detail {
+            color: #b0b8d4;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        /* Projects Section */
+        #projects {
+            background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 100%);
+        }
+
+        .projects-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .project-card {
+            background: rgba(26, 31, 58, 0.6);
+            border: 1px solid rgba(79, 209, 197, 0.2);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-header {
+            background: linear-gradient(135deg, rgba(79, 209, 197, 0.2), rgba(168, 218, 220, 0.1));
+            padding: 2rem;
+            border-bottom: 1px solid rgba(79, 209, 197, 0.2);
+        }
+
+        .project-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(79, 209, 197, 0.2);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .project-card h3 {
+            color: #ffffff;
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-category {
+            color: #4fd1c5;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+
+        .project-body {
+            padding: 2rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-desc {
+            color: #b0b8d4;
+            font-size: 1rem;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+        }
+
+        .project-tag {
+            background: rgba(79, 209, 197, 0.1);
+            color: #a8dadc;
+            padding: 0.4rem 1rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            border: 1px solid rgba(79, 209, 197, 0.2);
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(79, 209, 197, 0.5);
+            background: rgba(26, 31, 58, 0.9);
+            box-shadow: 0 10px 30px rgba(79, 209, 197, 0.15);
+        }
+
+        /* Experience Section */
+        #experience {
+            background: linear-gradient(135deg, rgba(26, 31, 58, 0.5) 0%, rgba(10, 14, 39, 0.8) 100%);
+        }
+
+        .experience-timeline {
+            position: relative;
+            margin-top: 2rem;
+        }
+
+        .experience-item {
+            margin-bottom: 3rem;
+            padding-left: 3rem;
+            position: relative;
+        }
+
+        .experience-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 12px;
+            height: 12px;
+            background: #4fd1c5;
+            border-radius: 50%;
+            border: 3px solid #0a0e27;
+            box-shadow: 0 0 0 3px #4fd1c5;
+        }
+
+        .experience-item::after {
+            content: '';
+            position: absolute;
+            left: 6px;
+            top: 12px;
+            width: 0;
+            height: calc(100% + 24px);
+            border-left: 1px solid rgba(79, 209, 197, 0.3);
+        }
+
+        .experience-item:last-child::after {
+            display: none;
+        }
+
+        .experience-item h3 {
+            color: #ffffff;
+            font-size: 1.3rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .experience-meta {
+            color: #4fd1c5;
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+        }
+
+        .experience-desc {
+            color: #b0b8d4;
+            font-size: 1rem;
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+
+        .experience-points {
+            list-style: none;
+            color: #b0b8d4;
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+
+        .experience-points li {
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .experience-points li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: #4fd1c5;
+        }
+
+        /* Contact Section */
+        #contact {
+            background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 100%);
+            text-align: center;
+        }
+
+        .contact-content {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .contact-content p {
+            font-size: 1.1rem;
+            color: #b0b8d4;
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .contact-methods {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .contact-method {
+            background: rgba(26, 31, 58, 0.6);
+            border: 1px solid rgba(79, 209, 197, 0.2);
+            padding: 2rem;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .contact-method:hover {
+            border-color: rgba(79, 209, 197, 0.5);
+            background: rgba(26, 31, 58, 0.9);
+        }
+
+        .contact-method-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-method-label {
+            color: #b0b8d4;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-method a {
+            color: #4fd1c5;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .contact-method a:hover {
+            color: #a8dadc;
+        }
+
+        /* Footer */
+        footer {
+            background: #0a0e27;
+            border-top: 1px solid rgba(79, 209, 197, 0.1);
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-links a {
+            color: #b0b8d4;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: #4fd1c5;
+        }
+
+        .footer-text {
+            color: #6b7280;
+            font-size: 0.9rem;
+        }
+
+        /* Animations */
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .achievement-card,
+        .project-card,
+        .skill-category,
+        .experience-item {
+            animation: slideInUp 0.6s ease forwards;
+        }
+
+        .achievement-card:nth-child(1) { animation-delay: 0.1s; }
+        .achievement-card:nth-child(2) { animation-delay: 0.2s; }
+        .achievement-card:nth-child(3) { animation-delay: 0.3s; }
+        .achievement-card:nth-child(4) { animation-delay: 0.4s; }
+        .achievement-card:nth-child(5) { animation-delay: 0.5s; }
+        .achievement-card:nth-child(6) { animation-delay: 0.6s; }
+        .achievement-card:nth-child(7) { animation-delay: 0.7s; }
+
+        .project-card:nth-child(1) { animation-delay: 0.1s; }
+        .project-card:nth-child(2) { animation-delay: 0.2s; }
+        .project-card:nth-child(3) { animation-delay: 0.3s; }
+
+        .skill-category:nth-child(1) { animation-delay: 0.1s; }
+        .skill-category:nth-child(2) { animation-delay: 0.2s; }
+        .skill-category:nth-child(3) { animation-delay: 0.3s; }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                padding: 1rem;
+            }
+
+            .nav-links {
+                gap: 1rem;
+            }
+
+            section {
+                padding: 4rem 1rem;
+            }
+
+            section h2 {
+                font-size: 2rem;
+            }
+
+            .stats {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">Z</div>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#achievements">Achievements</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Hi, I'm <span class="name-highlight">Zirui Zang</span></h1>
+            <p>Grade 11 Student | Mathematician & Physicist</p>
+            <p class="hero-subtitle">Competing at International Levels in STEM | Cambridge A-Level Scholar</p>
+            
+            <div class="stats">
+                <div class="stat">
+                    <span class="stat-number">7</span>
+                    <span class="stat-label">International Awards</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">4</span>
+                    <span class="stat-label">A-Level Subjects</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">Top 10%</span>
+                    <span class="stat-label">AMC12B Score</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">16</span>
+                    <span class="stat-label">Years Old</span>
+                </div>
+            </div>
+
+            <button class="cta-button" onclick="document.getElementById('achievements').scrollIntoView();">View My Achievements</button>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <h2>About Me</h2>
+        <div class="about-grid">
+            <div>
+                <div class="focus-area">
+                    <h3>Who I Am</h3>
+                    <p>I'm Zirui Zang, a passionate Grade 11 student at NFLS Cambridge A-level Center with an intense focus on mathematics, physics, chemistry, and economics. Born January 18, 2009, I've dedicated myself to academic excellence and competing at the highest international levels.</p>
+                    <p>My journey has been marked by consistent success in prestigious mathematics and physics competitions. I thrive in challenging environments where problem-solving meets creativity, and I'm driven by the pursuit of understanding deep concepts rather than memorizing formulas.</p>
+                </div>
+
+                <div class="focus-area">
+                    <h3>My Philosophy</h3>
+                    <p>I believe that true mastery comes from curiosity and persistence. Whether tackling olympiad problems late into the night or exploring cutting-edge physics concepts, I approach every challenge as an opportunity to grow. I'm not just chasing grades—I'm building a foundation for scientific thinking that will shape my future.</p>
+                </div>
+            </div>
+
+            <div>
+                <div class="focus-area">
+                    <h3>Academic Focus</h3>
+                    <div class="subjects">
+                        <span class="subject-tag">🔬 Physics</span>
+                        <span class="subject-tag">📐 Mathematics</span>
+                        <span class="subject-tag">🧪 Chemistry</span>
+                        <span class="subject-tag">💼 Economics</span>
+                    </div>
+                </div>
+
+                <div class="focus-area">
+                    <h3>What Drives Me</h3>
+                    <ul style="color: #b0b8d4; padding-left: 1.5rem;">
+                        <li style="margin-bottom: 0.8rem;">Solving complex mathematical problems</li>
+                        <li style="margin-bottom: 0.8rem;">Understanding the physics behind everyday phenomena</li>
+                        <li style="margin-bottom: 0.8rem;">Competing with talented students worldwide</li>
+                        <li style="margin-bottom: 0.8rem;">Applying theoretical knowledge to real-world challenges</li>
+                        <li style="margin-bottom: 0.8rem;">Continuous learning and intellectual growth</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <h2>Skills & Expertise</h2>
+        <div class="skills-grid">
+            <div class="skill-category">
+                <h3>📐 Mathematics</h3>
+                <div class="skill-list">
+                    <span class="skill-item">Olympiad Math</span>
+                    <span class="skill-item">Number Theory</span>
+                    <span class="skill-item">Algebra</span>
+                    <span class="skill-item">Geometry</span>
+                    <span class="skill-item">Calculus</span>
+                    <span class="skill-item">Statistics</span>
+                </div>
+            </div>
+
+            <div class="skill-category">
+                <h3>🔬 Physics</h3>
+                <div class="skill-list">
+                    <span class="skill-item">Mechanics</span>
+                    <span class="skill-item">Thermodynamics</span>
+                    <span class="skill-item">Electromagnetism</span>
+                    <span class="skill-item">Oscillations</span>
+                    <span class="skill-item">Waves</span>
+                    <span class="skill-item">Optics</span>
+                </div>
+            </div>
+
+            <div class="skill-category">
+                <h3>🧠 Other Competencies</h3>
+                <div class="skill-list">
+                    <span class="skill-item">Problem Solving</span>
+                    <span class="skill-item">Analytical Thinking</span>
+                    <span class="skill-item">Research</span>
+                    <span class="skill-item">Scientific Writing</span>
+                    <span class="skill-item">Technical Communication</span>
+                    <span class="skill-item">Time Management</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Achievements Section -->
+    <section id="achievements">
+        <h2>Awards & Honors</h2>
+        <div class="achievements-container">
+            <div class="achievement-card">
+                <div class="achievement-year">2025</div>
+                <div class="achievement-title">AMC12B</div>
+                <div class="achievement-detail">Score: 112.5 • Top 10% Nationally • Demonstrates advanced problem-solving in pre-calculus mathematics</div>
+            </div>
+
+            <div class="achievement-card">
+                <div class="achievement-year">2025</div>
+                <div class="achievement-title">British Physics Olympiad</div>
+                <div class="achievement-detail">Global Bronze I • Competed against elite physics students worldwide • Showcases mastery in classical mechanics and modern physics</div>
+            </div>
+
+            <div class="achievement-card">
+                <div class="achievement-year">2025</div>
+                <div class="achievement-title">PhysicsBowl</div>
+                <div class="achievement-detail">Top Gold Division 1 • Ranked among the best high school physics competitors • Covers mechanics, electricity, magnetism, and more</div>
+            </div>
+
+            <div class="achievement-card">
+                <div class="achievement-year">2025</div>
+                <div class="achievement-title">Senior Physics Challenge</div>
+                <div class="achievement-detail">Global Gold • International recognition for excellence in physics reasoning and problem-solving across diverse topics</div>
+            </div>
+
+            <div class="achievement-card">
+                <div class="achievement-year">2024</div>
+                <div class="achievement-title">Senior Mathematical Challenge</div>
+                <div class="achievement-detail">Global Gold • Prestigious mathematics competition recognizing exceptional problem-solving abilities</div>
+            </div>
+
+            <div class="achievement-card">
+                <div class="achievement-year">2025</div>
+                <div class="achievement-title">British Mathematical Olympiad Round 1</div>
+                <div class="achievement-detail">Distinction • Advanced competition featuring proof-based problems of increasing difficulty</div>
+            </div>
+
+            <div class="achievement-card">
+                <div class="achievement-year">2024-2025</div>
+                <div class="achievement-title">HiMCM (High School Mathematical Contest in Modeling)</div>
+                <div class="achievement-detail">Honorable Mention • Tested mathematical modeling and team problem-solving on real-world challenges</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <h2>Research & Projects</h2>
+        <div class="projects-container">
+            <div class="project-card">
+                <div class="project-header">
+                    <div class="project-icon">📊</div>
+                    <div class="project-category">Mathematical Modeling</div>
+                    <h3>HiMCM Competition Study</h3>
+                </div>
+                <div class="project-body">
+                    <p class="project-desc">Participated in the High School Mathematical Contest in Modeling, applying advanced mathematical techniques to model real-world scenarios. Worked collaboratively to solve complex, open-ended problems requiring creative problem-solving and rigorous analysis.</p>
+                    <div class="project-tags">
+                        <span class="project-tag">Modeling</span>
+                        <span class="project-tag">Analysis</span>
+                        <span class="project-tag">Teamwork</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <div class="project-icon">⚛️</div>
+                    <div class="project-category">Physics Research</div>
+                    <h3>Classical Mechanics Deep Dive</h3>
+                </div>
+                <div class="project-body">
+                    <p class="project-desc">Conducted extensive independent study of classical mechanics, from Newton's laws through Lagrangian and Hamiltonian formulations. Explored applications in oscillatory systems, orbital mechanics, and rotational dynamics.</p>
+                    <div class="project-tags">
+                        <span class="project-tag">Mechanics</span>
+                        <span class="project-tag">Research</span>
+                        <span class="project-tag">Theory</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <div class="project-icon">🔢</div>
+                    <div class="project-category">Mathematics</div>
+                    <h3>Advanced Number Theory Study</h3>
+                </div>
+                <div class="project-body">
+                    <p class="project-desc">Explored advanced topics in number theory including modular arithmetic, prime numbers, Diophantine equations, and combinatorial number theory. Applied findings to olympiad-style problems.</p>
+                    <div class="project-tags">
+                        <span class="project-tag">Number Theory</span>
+                        <span class="project-tag">Olympiad</span>
+                        <span class="project-tag">Pure Math</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience">
+        <h2>Experience & Activities</h2>
+        <div class="experience-timeline">
+            <div class="experience-item">
+                <h3>NFLS Cambridge A-Level Center</h3>
+                <div class="experience-meta">Grade 11 | September 2024 – Present</div>
+                <div class="experience-desc">Pursuing advanced studies in Physics, Mathematics, Chemistry, and Economics with a focus on academic excellence and international competitiveness.</div>
+                <ul class="experience-points">
+                    <li>Maintaining top academic performance across all subjects</li>
+                    <li>Participating in school-wide STEM initiatives</li>
+                    <li>Engaging in collaborative learning with international peers</li>
+                </ul>
+            </div>
+
+            <div class="experience-item">
+                <h3>International Mathematics Competitions</h3>
+                <div class="experience-meta">2024 – 2025</div>
+                <div class="experience-desc">Competed in multiple prestigious international mathematics competitions, earning medals and recognition for advanced problem-solving skills.</div>
+                <ul class="experience-points">
+                    <li>AMC12B: Scored 112.5 (Top 10%)</li>
+                    <li>British Mathematical Olympiad: Achieved Distinction in Round 1</li>
+                    <li>Senior Mathematical Challenge: Earned Global Gold</li>
+                </ul>
+            </div>
+
+            <div class="experience-item">
+                <h3>International Physics Competitions</h3>
+                <div class="experience-meta">2025</div>
+                <div class="experience-desc">Competed in elite physics competitions at the global level, demonstrating comprehensive understanding of physics principles and problem-solving abilities.</div>
+                <ul class="experience-points">
+                    <li>British Physics Olympiad: Global Bronze I Medal</li>
+                    <li>PhysicsBowl: Top Gold Division 1 Award</li>
+                    <li>Senior Physics Challenge: Global Gold Award</li>
+                </ul>
+            </div>
+
+            <div class="experience-item">
+                <h3>Independent Research & Study</h3>
+                <div class="experience-meta">Ongoing</div>
+                <div class="experience-desc">Dedicated to continuous self-improvement through independent study of advanced topics in mathematics and physics, exploring concepts beyond standard curriculum.</div>
+                <ul class="experience-points">
+                    <li>Deep dives into theoretical physics and pure mathematics</li>
+                    <li>Problem-solving from historical competition archives</li>
+                    <li>Exploration of cutting-edge scientific concepts</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <h2>Let's Connect</h2>
+        <div class="contact-content">
+            <p>I'm passionate about STEM and always excited to connect with universities, academic communities, research institutions, and fellow students who share my enthusiasm for learning and excellence.</p>
+            
+            <div class="contact-methods">
+                <div class="contact-method">
+                    <div class="contact-method-icon">✉️</div>
+                    <div class="contact-method-label">Email</div>
+                    <a href="mailto:ziruizang30@gmail.com">ziruizang30@gmail.com</a>
+                </div>
+                <div class="contact-method">
+                    <div class="contact-method-icon">📍</div>
+                    <div class="contact-method-label">Location</div>
+                    <a href="#">Cambridge, UK</a>
+                </div>
+                <div class="contact-method">
+                    <div class="contact-method-icon">🎓</div>
+                    <div class="contact-method-label">School</div>
+                    <a href="#">NFLS Cambridge</a>
+                </div>
+            </div>
+
+            <p style="margin-top: 2rem;">Feel free to reach out for collaboration opportunities, discussions about STEM topics, or if you have any questions about my achievements and background.</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="#about">About</a>
+                <a href="#skills">Skills</a>
+                <a href="#achievements">Achievements</a>
+                <a href="#projects">Projects</a>
+                <a href="#experience">Experience</a>
+                <a href="#contact">Contact</a>
+            </div>
+            <div class="footer-text">
+                <p>&copy; 2025 Zirui Zang. Built with passion for academic excellence.</p>
+                <p style="margin-top: 0.5rem; font-size: 0.8rem;">Designed to showcase academic achievements and demonstrate commitment to STEM education.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scroll behavior for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Animation on scroll for cards
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.achievement-card, .project-card, .skill-category, .experience-item').forEach(element => {
+            element.style.opacity = '0';
+            element.style.transform = 'translateY(30px)';
+            observer.observe(element);
+        });
+
+        // Active nav link highlighting on scroll
+        window.addEventListener('scroll', () => {
+            let current = '';
+            const sections = document.querySelectorAll('section');
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.style.color = '#b0b8d4';
+                if (link.getAttribute('href').slice(1) === current) {
+                    link.style.color = '#4fd1c5;
+                }
+            });
+        });
+    </script>
+</body>
+</html>
